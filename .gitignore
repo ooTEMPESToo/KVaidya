@@ -1,0 +1,17 @@
+# Ignore Python virtual environments
+server2/myvenv/
+**/myvenv/
+**/myvenv/Lib/site-packages/xgboost/lib/xgboost.dll
+
+# Ignore node_modules
+frontend/node_modules/
+**/node_modules/
+
+# Ignore build artifacts
+*.pyc
+__pycache__/
+*.log
+
+# Ignore system files
+.DS_Store
+.env

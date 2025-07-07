@@ -1,0 +1,16 @@
+{
+  "node": {
+    "40012efa73e0741fb0d67043add4baf098531c9a37": {
+      "workers": {
+        "app/predict/page": {
+          "moduleId": "[project]/.next-internal/server/app/predict/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/predict/action/getAIGenText.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/predict/page": "action-browser"
+      }
+    }
+  },
+  "edge": {}
+}
