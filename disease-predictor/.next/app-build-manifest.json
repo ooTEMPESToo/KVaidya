@@ -36,24 +36,6 @@
       "static/chunks/874-b0d2d2fa78d337c5.js",
       "static/chunks/app/page-82636d3c76c10fc5.js"
     ],
-    "/predict/page": [
-      "static/chunks/webpack-4290644c8d2a75b4.js",
-      "static/chunks/4bd1b696-82a581a0e7ab5b33.js",
-      "static/chunks/684-20ef810ffd6bce8d.js",
-      "static/chunks/main-app-062190dc8c63318a.js",
-      "static/chunks/224-76a73b8633d515ef.js",
-      "static/chunks/874-b0d2d2fa78d337c5.js",
-      "static/chunks/839-91d609ebe80171f6.js",
-      "static/chunks/894-57619214ba0b007b.js",
-      "static/chunks/app/predict/page-1e26f844cab6c80c.js"
-    ],
-    "/reports/page": [
-      "static/chunks/webpack-4290644c8d2a75b4.js",
-      "static/chunks/4bd1b696-82a581a0e7ab5b33.js",
-      "static/chunks/684-20ef810ffd6bce8d.js",
-      "static/chunks/main-app-062190dc8c63318a.js",
-      "static/chunks/app/reports/page-900012e76e012886.js"
-    ],
     "/stats/page": [
       "static/chunks/webpack-4290644c8d2a75b4.js",
       "static/chunks/4bd1b696-82a581a0e7ab5b33.js",
@@ -63,7 +45,25 @@
       "static/chunks/224-76a73b8633d515ef.js",
       "static/chunks/196-279b3b34a773214d.js",
       "static/chunks/6-3451d70ecf2f0cbb.js",
-      "static/chunks/app/stats/page-7b1d3ffcc7db46d5.js"
+      "static/chunks/app/stats/page-b1e0d2f89932bbb5.js"
+    ],
+    "/reports/page": [
+      "static/chunks/webpack-4290644c8d2a75b4.js",
+      "static/chunks/4bd1b696-82a581a0e7ab5b33.js",
+      "static/chunks/684-20ef810ffd6bce8d.js",
+      "static/chunks/main-app-062190dc8c63318a.js",
+      "static/chunks/app/reports/page-8818bc03580bba09.js"
+    ],
+    "/predict/page": [
+      "static/chunks/webpack-4290644c8d2a75b4.js",
+      "static/chunks/4bd1b696-82a581a0e7ab5b33.js",
+      "static/chunks/684-20ef810ffd6bce8d.js",
+      "static/chunks/main-app-062190dc8c63318a.js",
+      "static/chunks/224-76a73b8633d515ef.js",
+      "static/chunks/874-b0d2d2fa78d337c5.js",
+      "static/chunks/839-91d609ebe80171f6.js",
+      "static/chunks/894-57619214ba0b007b.js",
+      "static/chunks/app/predict/page-f2d5a817993178ff.js"
     ]
   }
 }

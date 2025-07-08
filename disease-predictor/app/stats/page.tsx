@@ -87,7 +87,7 @@ export default function StatsPage() {
 
       try {
         // Fetch disease stats
-        const diseaseResponse = await fetch("http://localhost:5000/stats");
+        const diseaseResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stats`);
         if (!diseaseResponse.ok) {
           throw new Error("Failed to fetch disease statistics");
         }

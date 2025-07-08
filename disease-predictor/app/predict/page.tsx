@@ -69,8 +69,8 @@ export default function PredictPage() {
 
     const fetchSymptoms = async () => {
       try {
-        const res = await fetch("http://localhost:5000/symptoms");
-        // await new Promise((resolve) => setTimeout(resolve, 10000));
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/symptoms`);
+        // await new Promise((resolve) => setTimeout(resolve, 10000)); 
         if (!res.ok) throw new Error("Failed to fetch symptoms");
         const data = await res.json();
         setSymptomsList(data.symptoms);
@@ -113,7 +113,7 @@ export default function PredictPage() {
     setPrediction(null);
 
     try {
-      const response = await fetch("http://localhost:5000/predict", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/predict`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ symptoms: selectedSymptoms }),

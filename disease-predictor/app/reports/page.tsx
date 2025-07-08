@@ -44,9 +44,9 @@ export default function AnalyzeReportPage() {
     const formData = new FormData();
     formData.append("pdf", file);
     formData.append("question", question);
-
+//
     try {
-      const res = await fetch("http://localhost:5000/api/analyze-report", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/analyze-report`, {
         method: "POST",
         body: formData,
       });

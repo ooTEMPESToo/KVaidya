@@ -3,7 +3,7 @@
   "/favicon.ico/route": "/favicon.ico",
   "/Dr_help/page": "/Dr_help",
   "/page": "/",
-  "/predict/page": "/predict",
+  "/stats/page": "/stats",
   "/reports/page": "/reports",
-  "/stats/page": "/stats"
+  "/predict/page": "/predict"
 }
