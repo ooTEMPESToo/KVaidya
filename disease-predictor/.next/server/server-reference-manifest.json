@@ -1,17 +1,1 @@
-{
-  "node": {
-    "40012efa73e0741fb0d67043add4baf098531c9a37": {
-      "workers": {
-        "app/predict/page": {
-          "moduleId": "[project]/.next-internal/server/app/predict/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/predict/action/getAIGenText.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false
-        }
-      },
-      "layer": {
-        "app/predict/page": "action-browser"
-      }
-    }
-  },
-  "edge": {},
-  "encryptionKey": "EfPTonuyGau88DqgQ1H84eei1egECCwanwRs5f/GNgY="
-}
+{"node":{"40e955921dfaf954e02f63acb7aae04858a08212f4":{"workers":{"app/predict/page":{"moduleId":"1917","async":false}},"layer":{"app/predict/page":"action-browser"}}},"edge":{},"encryptionKey":"E/6PKnwIZSJWxDn9bAGpOvL/70GgZK/mkleoEoWODCA="}

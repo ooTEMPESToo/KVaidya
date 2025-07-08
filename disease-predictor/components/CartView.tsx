@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import Modal from "./Modal";
 import PaymentModal from "./PaymentModal";
 import { Doctor } from './types';
+import Image from "next/image";
 
 interface CartViewProps {
   cart: Doctor[];
@@ -37,7 +38,7 @@ const CartView: React.FC<CartViewProps> = ({ cart, onRemoveFromCart, onCheckout,
               {cart.map((doctor) => (
                 <div key={doctor.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200">
                   <div className="flex items-center space-x-3">
-                    <img
+                    <Image
                       src={doctor.image}
                       alt={doctor.name}
                       className="w-14 h-14 rounded-md object-cover"

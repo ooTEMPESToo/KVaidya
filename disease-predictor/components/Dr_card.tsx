@@ -1,5 +1,6 @@
 import { Mail, ShoppingCart } from "lucide-react";
 import { Doctor } from './types';
+import Image from "next/image";
 interface DoctorCardProps {
   doctor: Doctor;
   onAddToCart: (doctor: Doctor) => void;
@@ -8,7 +9,7 @@ interface DoctorCardProps {
 const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onAddToCart, onContact }) => {
   return (
     <div className="bg-white shadow-xl rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
-      <img
+      <Image
         src={doctor.image || `https://placehold.co/400x300/E2E8F0/4A5568?text=${doctor.name.split(' ')[1]}`}
         alt={`Photo of ${doctor.name}`}
         className="w-full h-56 object-cover"

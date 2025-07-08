@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Activity, BarChart3, HeartPulse, Stethoscope } from "lucide-react";
+import { Activity, HeartPulse} from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
