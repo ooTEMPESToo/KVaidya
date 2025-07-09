@@ -30,7 +30,7 @@ KVaidya is a full-stack healthcare assistant that uses AI to:
 
 ## 🚀 Live Demo
 
-- Frontend: [https://kvaidya.vercel.app](https://kvaidya.vercel.app)
+- Frontend: [https://k-vaidya.vercel.app](https://k-vaidya.vercel.app)
 - Backend API: [https://kvaidya.onrender.com](https://kvaidya.onrender.com)
 
 ---
