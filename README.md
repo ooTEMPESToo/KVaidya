@@ -150,7 +150,3 @@ Feel free to fork, open issues or contribute to improve the project!
 Every PR is appreciated!
 
 ---
-
-## 📜 License
-
-MIT License
