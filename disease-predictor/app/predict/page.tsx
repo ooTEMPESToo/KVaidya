@@ -1,6 +1,4 @@
 "use client";
-
-// import { OpenAI } from "openai";
 import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
