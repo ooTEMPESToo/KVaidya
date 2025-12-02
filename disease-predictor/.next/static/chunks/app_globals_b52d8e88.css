@@ -534,6 +534,10 @@
     display: block;
   }
 
+  .contents {
+    display: contents;
+  }
+
   .flex {
     display: flex;
   }
@@ -1919,10 +1923,6 @@
 
   .ease-in-out {
     animation-timing-function: cubic-bezier(.4, 0, .2, 1);
-  }
-
-  .running {
-    animation-play-state: running;
   }
 
   @media (hover: hover) {
