@@ -72,7 +72,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 export async function GetGeminiGenText(prediction: string) {
   try {
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const prompt = `Give a brief overview with just the description of the disease and a small cause (3 sentences maximum) of the disease: ${prediction}`;
 

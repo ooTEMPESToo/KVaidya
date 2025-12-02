@@ -20,7 +20,7 @@ async function /*#__TURBOPACK_DISABLE_EXPORT_MERGING__*/ GetGeminiGenText(predic
     try {
         const genAI = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$google$2f$generative$2d$ai$2f$dist$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["GoogleGenerativeAI"](process.env.GEMINI_API_KEY);
         const model = genAI.getGenerativeModel({
-            model: "gemini-2.0-flash"
+            model: "gemini-2.5-flash"
         });
         const prompt = `Give a brief overview with just the description of the disease and a small cause (3 sentences maximum) of the disease: ${prediction}`;
         const result = await model.generateContent(prompt);
