@@ -316,55 +316,81 @@ def analyze_report():
         return jsonify({"error": "No selected file"}), 400
 
     if pdf_file and pdf_file.mimetype == 'application/pdf':
+        temp_pdf_path = None
+        uploaded_file = None
+        
         try:
             filename = secure_filename(pdf_file.filename)
             temp_pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             pdf_file.save(temp_pdf_path)
 
             # 1. Upload the PDF to Gemini Files API
-            print(f"Uploading file: {temp_pdf_path}")
+            print(f"Uploading file to Gemini: {temp_pdf_path}")
             uploaded_file = genai.upload_file(path=temp_pdf_path, display_name=filename)
             print(f"Uploaded file '{uploaded_file.display_name}' as: {uploaded_file.uri}")
 
-            # 2. Prepare the prompt for the Gemini model
-            # Choose a model that supports file input.
-            # For text extraction and Q&A from PDFs, gemini-1.5-flash or gemini-1.5-pro are good choices.
-            model = genai.GenerativeModel(model_name="gemini-1.5-flash") # Or "gemini-1.5-pro"
+            # 2. Wait for file processing (Critical Step for PDFs)
+            # Large PDFs might take a few seconds to process on Google's side
+            while uploaded_file.state.name == "PROCESSING":
+                print("Waiting for file processing...")
+                time.sleep(2)
+                uploaded_file = genai.get_file(uploaded_file.name)
 
-            prompt_parts = [
-                uploaded_file, # The uploaded file object
-                "\n\nIMPORTANT: You are an AI assistant. Your task is to help the user understand the provided medical report by answering their specific question. ",
-                "tell the user to refer to the medical report for details in short paragraph.",
-                "Based on the content of the medical report, please answer the following question:",
-                f"\nUser's Question: {user_question}",
-            ]
+            if uploaded_file.state.name == "FAILED":
+                raise Exception("File processing failed on Gemini side.")
 
-            # 3. Generate content
+            # 3. Initialize the latest model
+            # gemini-2.5-flash is the current stable, high-performance model
+            model = genai.GenerativeModel(model_name="gemini-3-pro-preview")
+
+            # 4. Enhanced Prompt Engineering
+            prompt = f"""
+            Role: You are an expert medical AI assistant helping a user understand their medical report.
+
+            Task 1: Detailed Overview
+            - First, identify the **Patient's Name** (if stated) and the **Primary Disease/Condition** found in the report.
+            - Start your response in the first person, exactly like this: "I have analyzed the medical report for [Patient Name] regarding [Disease Name]..."
+            - Provide a detailed, easy-to-understand description of the clinical findings, test results, and diagnosis.
+
+            Task 2: Answer User Question
+            - Based *only* on the content of this medical report, answer the specific question below.
+            - If the answer is not in the report, state that clearly.
+            
+            User's Question: "{user_question}"
+
+            Disclaimer: End with a short note reminding the user to consult a real doctor for medical advice.
+            """
+
+            # 5. Generate content
             print("Generating response from Gemini...")
-            response = model.generate_content(prompt_parts)
+            response = model.generate_content([uploaded_file, prompt])
 
-            # Clean up the temporary file after processing
+            # 6. Clean up local file
             if os.path.exists(temp_pdf_path):
                 os.remove(temp_pdf_path)
-            # Note: Gemini Files API automatically deletes files after 48 hours.
-            # You can also manually delete them using genai.delete_file(uploaded_file.name) if needed sooner.
+            
+            # 7. Clean up Gemini remote file (Save storage/privacy)
+            # It's good practice to delete the file from the cloud immediately after inference
+            genai.delete_file(uploaded_file.name)
 
             return jsonify({"response": response.text})
 
         except Exception as e:
             print(f"Error processing request: {e}")
-            # Clean up in case of error too
-            if 'temp_pdf_path' in locals() and os.path.exists(temp_pdf_path):
+            
+            # Cleanup on error
+            if temp_pdf_path and os.path.exists(temp_pdf_path):
                 os.remove(temp_pdf_path)
-            if 'uploaded_file' in locals() and uploaded_file:
+            
+            if uploaded_file:
                 try:
-                    genai.delete_file(uploaded_file.name) # Attempt to delete from Gemini if upload succeeded
+                    genai.delete_file(uploaded_file.name)
                 except Exception as del_e:
-                    print(f"Error deleting uploaded file from Gemini: {del_e}")
+                    print(f"Error deleting file from Gemini: {del_e}")
+
             return jsonify({"error": str(e)}), 500
     else:
         return jsonify({"error": "Invalid file type. Only PDF is allowed."}), 400
-
 
 if __name__ == "__main__":
     print(f"Flask app starting. Debug mode: {app.debug}")
