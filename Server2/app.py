@@ -341,7 +341,7 @@ def analyze_report():
 
             # 3. Initialize the latest model
             # gemini-2.5-flash is the current stable, high-performance model
-            model = genai.GenerativeModel(model_name="gemini-3-pro-preview")
+            model = genai.GenerativeModel(model_name="gemini-2.5-flash")
 
             # 4. Enhanced Prompt Engineering
             prompt = f"""
