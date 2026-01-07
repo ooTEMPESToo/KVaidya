@@ -825,7 +825,7 @@ function PredictPage() {
             const fetchSymptoms = {
                 "PredictPage.useEffect.fetchSymptoms": async ()=>{
                     try {
-                        const res = await fetch(`${("TURBOPACK compile-time value", "https://kvaidya.onrender.com")}/symptoms`);
+                        const res = await fetch(`${("TURBOPACK compile-time value", "http://localhost:5000/")}/symptoms`);
                         // await new Promise((resolve) => setTimeout(resolve, 10000)); 
                         if (!res.ok) throw new Error("Failed to fetch symptoms");
                         const data = await res.json();
@@ -866,7 +866,7 @@ function PredictPage() {
         setError(null);
         setPrediction(null);
         try {
-            const response = await fetch(`${("TURBOPACK compile-time value", "https://kvaidya.onrender.com")}/predict`, {
+            const response = await fetch(`${("TURBOPACK compile-time value", "http://localhost:5000/")}/predict`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

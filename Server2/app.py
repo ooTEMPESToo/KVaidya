@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 import os
+import time
 from werkzeug.utils import secure_filename
 import pandas as pd # For disease prediction
 from sklearn.ensemble import RandomForestClassifier # For disease prediction
